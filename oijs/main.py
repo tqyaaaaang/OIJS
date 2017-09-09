@@ -3,8 +3,18 @@
 #
 # OIJS: main
 
+
+
+
+
+from .cli import cli_main
+
+
+
+
+
 def main ():
-	print ( "Hello World!" )
+	cli_main.cli_run ()
 
 if __name__ == '__main__':
 	main ()
