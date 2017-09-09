@@ -16,11 +16,11 @@ from .cli_ret_values import *
 
 
 def run_command ( argv ):
-    arg_str = ''
-    for val in argv: arg_str += val + ' '
-    print ( "Running command : " + arg_str )
+	arg_str = ''
+	for val in argv: arg_str += val + ' '
+	print ( "Running command : " + arg_str )
 
-    if argv == [ 'exit' ]:
-        return RET_EXIT
+	if argv == [ 'exit' ]:
+		return RET_EXIT
 
-    return RET_OK
+	return RET_OK
