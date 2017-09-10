@@ -23,10 +23,19 @@ setup (
 	packages = find_packages (),
 
 	install_requires = [
-		'PyYAML'
+		'PyYAML>=3.12',
 	],
 
 	python_requires = '>=3',
+
+	package_data = {
+		'oijs.globals.config': [ 'default_conf/*.yml' ]
+	},
+
+	data_files = [
+		( 'share/doc/oijs', [ 'docs/README.md', 'docs/installation.md' ] ),
+		( 'lib/oijs/oijs_dir', [ 'lib/oijs_dir/config.yml' ] ),
+	],
 
 	entry_points = {
 		'console_scripts': [

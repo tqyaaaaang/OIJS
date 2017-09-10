@@ -8,6 +8,7 @@
 
 
 import sys
+import logging
 
 from .cli_ret_values import *
 
@@ -16,9 +17,13 @@ from .cli_ret_values import *
 
 
 def run_command ( argv ):
-	arg_str = ''
-	for val in argv: arg_str += val + ' '
-	print ( "Running command : " + arg_str )
+	logging.debug ( 'function started' )
+
+	argv_str = ''
+	for val in argv: argv_str += str ( val ) + ' '
+	logging.info ( 'running command : {0}'.format ( argv_str ) )
+
+	print ( 'Running command : {0}'.format ( argv_str ) )
 
 	if argv == [ 'exit' ]:
 		return RET_EXIT
