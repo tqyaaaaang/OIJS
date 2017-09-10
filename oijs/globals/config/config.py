@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# OIJS: global.config.global_conf
+# OIJS: global.config.config
 
 
 
