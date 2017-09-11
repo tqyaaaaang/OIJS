@@ -8,7 +8,7 @@
 
 
 from . import global_conf
-from . import log_config
+from ..log import log_config
 from . import conf_helper
 
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# OIJS: global.config.log_config
+# OIJS: global.log.log_config
 
 
 
@@ -9,7 +9,7 @@
 
 import logging
 import os
-from . import global_conf
+from ..config import global_conf
 
 
 

@@ -10,6 +10,7 @@
 import yaml
 import sys
 import os
+import shutil
 from ..exception.exception import oijs_exception
 
 
@@ -63,4 +64,4 @@ def check_conf_exist ():
 	if not os.path.exists ( os.path.expanduser ( '~/.oijs' ) ):
 		print ( 'Can\'t find config directory. Generating one.' )
 
-		os.system ( 'cp {0} {1} -r'.format ( sys.path[0] + '/../lib/oijs/oijs_dir', os.path.expanduser ( '~/.oijs' ) ) )
+		shutil.copytree ( sys.path[0] + '/../lib/oijs/oijs_dir', os.path.expanduser ( '~/.oijs' ) )
