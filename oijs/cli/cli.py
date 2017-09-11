@@ -43,13 +43,13 @@ def run_shell ():
 
 
 
-def run_by_argument ():
+def run_by_argument ( argv ):
 	logging.info ( 'function started' )
 	argv_str = ''
 	for val in sys.argv[1:]: argv_str += str ( val ) + ' '
-	logging.info ( 'run_by_argument mode with argument = \'{0}\''.format ( argv_str[:-1] ) )
+	logging.info ( 'run_by_argument mode with arguments = \'{0}\''.format ( argv_str[:-1] ) )
 
-	return_val = run_single_command ( sys.argv[1:] )
+	return_val = run_single_command ( argv )
 
 	if return_val == RET_EXIT:
 		logging.warning ( 'using \'exit\' in run_by_argument mode' )
