@@ -13,6 +13,9 @@ import logging
 from .cli_ret_values import *
 from . import command
 from ..globals.config import global_conf
+from ..globals.data import global_arguments
+from .arguments import get_arguments
+from ..globals.data import global_data
 
 
 
@@ -21,12 +24,18 @@ from ..globals.config import global_conf
 def run_shell ():
 	logging.debug ( 'function started' )
 
+	global_data.run_mode = 'cli'
+
 	while 1:
 		current_argv_as_str = input ( 'oijs> ' )
 
 		logging.debug ( 'received one command : {0}'.format ( current_argv_as_str ) )
 
-		current_argv = current_argv_as_str.split ()
+		current_argv_list = current_argv_as_str.split ()
+
+		current_argv = get_arguments.get_cli_arguments ( current_argv_list )
+
+		logging.debug ( 'command arguments : {0}'.format ( str ( current_argv ) ) )
 
 		return_val = run_single_command ( current_argv )
 
@@ -43,13 +52,13 @@ def run_shell ():
 
 
 
-def run_by_argument ( argv ):
+def run_by_argument ():
 	logging.info ( 'function started' )
-	argv_str = ''
-	for val in sys.argv[1:]: argv_str += str ( val ) + ' '
-	logging.info ( 'run_by_argument mode with arguments = \'{0}\''.format ( argv_str[:-1] ) )
+	logging.info ( 'run_by_argument mode with arguments = \'{0}\''.format ( ' '.join ( sys.argv[1:] ) ) )
 
-	return_val = run_single_command ( argv )
+	global_data.run_mode = 'argv'
+
+	return_val = run_single_command ( global_arguments.global_arg )
 
 	if return_val == RET_EXIT:
 		logging.warning ( 'using \'exit\' in run_by_argument mode' )

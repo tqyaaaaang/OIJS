@@ -7,4 +7,4 @@
 
 
 
-directory = ''
+global_arg = None

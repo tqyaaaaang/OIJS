@@ -10,6 +10,7 @@
 from .cli import cli_main
 from .globals.data import data
 from .globals.config import config
+from .cli.arguments import get_arguments
 
 
 
@@ -18,6 +19,8 @@ from .globals.config import config
 def main ():
 	data.load_data ()
 	config.load_conf ()
+	get_arguments.init_parsers ()
+
 	cli_main.cli_run ()
 
 

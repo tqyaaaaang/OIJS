@@ -23,3 +23,5 @@ def load_data ():
 
 
 current_dir = ''
+
+run_mode = None
