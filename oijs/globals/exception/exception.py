@@ -15,3 +15,10 @@ class oijs_exception ( Exception ):
 
 	def error ( self ):
 		return self._error
+
+
+
+
+
+class RET_FATAL_exception ( Exception ):
+	pass

@@ -16,6 +16,8 @@ from ..globals.config import global_conf
 from ..globals.data import global_arguments
 from .arguments import get_arguments
 from ..globals.data import global_data
+from . import cli_cmd_class
+from ..globals.exception import exception
 
 
 
@@ -26,27 +28,11 @@ def run_shell ():
 
 	global_data.run_mode = 'cli'
 
-	while 1:
-		current_argv_as_str = input ( 'oijs> ' )
-
-		logging.debug ( 'received one command : {0}'.format ( current_argv_as_str ) )
-
-		current_argv_list = current_argv_as_str.split ()
-
-		current_argv = get_arguments.get_cli_arguments ( current_argv_list )
-
-		logging.debug ( 'command arguments : {0}'.format ( str ( current_argv ) ) )
-
-		global_arguments.current_arg = current_argv
-
-		return_val = run_single_command ()
-
-		if return_val == RET_EXIT:
-			logging.info ( 'received command \'exit\', exit normally' )
-			break
-		elif return_val == RET_FATAL:
-			logging.debug ( 'received fatal error, aborted the cli' )
-			return return_val
+	try:
+		cli_cmd_class.cli_cmd ().cmdloop ()
+	except exception.RET_FATAL_exception:
+		logging.debug ( 'receiving return value RET_FATAL. Aborted the cli' )
+		return RET_FATAL
 
 	logging.debug ( 'exit normally' )
 
