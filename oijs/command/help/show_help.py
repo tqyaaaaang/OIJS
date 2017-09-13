@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# OIJS: cli.commands.show_help
+# OIJS: command.help.show_help
 
 
 
@@ -10,7 +10,7 @@
 import logging
 
 from ...globals.data import global_data
-from ..arguments import print_help
+from ...cli.arguments import print_help
 
 
 
