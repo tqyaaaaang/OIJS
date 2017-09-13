@@ -37,7 +37,9 @@ def run_shell ():
 
 		logging.debug ( 'command arguments : {0}'.format ( str ( current_argv ) ) )
 
-		return_val = run_single_command ( current_argv )
+		global_arguments.current_arg = current_argv
+
+		return_val = run_single_command ()
 
 		if return_val == RET_EXIT:
 			logging.info ( 'received command \'exit\', exit normally' )
@@ -58,7 +60,9 @@ def run_by_argument ():
 
 	global_data.run_mode = 'argv'
 
-	return_val = run_single_command ( global_arguments.global_arg )
+	global_arguments.current_arg = global_arguments.global_arg
+
+	return_val = run_single_command ()
 
 	if return_val == RET_EXIT:
 		logging.warning ( 'using \'exit\' in run_by_argument mode' )
@@ -68,5 +72,5 @@ def run_by_argument ():
 
 
 
-def run_single_command ( argv ):
-	return command.run_command ( argv )
+def run_single_command ():
+	return command.run_command ()

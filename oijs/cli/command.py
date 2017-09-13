@@ -12,13 +12,16 @@ import logging
 
 from .cli_ret_values import *
 from ..command.help import show_help
+from ..globals.data import global_arguments
 
 
 
 
 
-def run_command ( argv ):
+def run_command ():
 	logging.debug ( 'function started' )
+
+	argv = global_arguments.current_arg
 
 	logging.info ( 'running command : {0}'.format ( str ( argv ) ) )
 

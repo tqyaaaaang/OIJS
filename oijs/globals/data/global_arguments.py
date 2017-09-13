@@ -8,3 +8,5 @@
 
 
 global_arg = None
+
+current_arg = None
