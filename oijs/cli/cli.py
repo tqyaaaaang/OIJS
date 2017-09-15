@@ -31,8 +31,11 @@ def run_shell ():
 	try:
 		cli_cmd_class.cli_cmd ().cmdloop ()
 	except exception.RET_FATAL_exception:
-		logging.debug ( 'receiving return value RET_FATAL. Aborted the cli' )
+		logging.debug ( 'receiving return value RET_FATAL. Abort the cli' )
 		return RET_FATAL
+	except KeyboardInterrupt:
+		logging.info ( 'receiving KeyboardInterrupt. Abort the cli' )
+		print ()
 
 	logging.debug ( 'exit normally' )
 

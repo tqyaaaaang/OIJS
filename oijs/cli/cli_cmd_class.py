@@ -45,10 +45,10 @@ class cli_cmd ( cmd.Cmd ):
 		return_val = cli.run_single_command ()
 
 		if return_val == RET_EXIT:
-			logging.info ( 'received command \'exit\', exit normally' )
+			logging.info ( 'receiving command \'exit\', exit normally' )
 			return True
 		elif return_val == RET_FATAL:
-			logging.debug ( 'received fatal error, aborted the cli' )
+			logging.debug ( 'receiving fatal error, aborted the cli' )
 			raise exception.RET_FATAL_exception ()
 
 
