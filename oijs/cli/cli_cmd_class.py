@@ -57,7 +57,7 @@ class cli_cmd ( cmd.Cmd ):
 		return cli_complete.complete ( text, line, begidx, endidx )
 
 	def completenames (  self, text, line, begidx, endidx ):
-		return self.completedefault ( text, line, begidx, endidx )
+		return cli_complete.complete_names ( text, line, begidx, endidx )
 
 
 
