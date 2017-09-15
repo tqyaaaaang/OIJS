@@ -1,0 +1,8 @@
+# global/config/default_conf/oijs_global_conf.yml
+
+
+
+log:
+    file: ~/.oijs/oijs.log
+    mode: a
+    level: INFO

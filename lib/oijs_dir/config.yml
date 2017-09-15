@@ -1,0 +1,31 @@
+# OIJS configuration file
+
+
+
+# logging config
+log:
+    # The path to the log file
+    #
+    # file: ~/.oijs/oijs.log
+
+    # Logging mode
+    # Supported modes:
+    #   a: Add to the end of the log file
+    #   w: Rewrite the log file
+    #
+    # mode: a
+
+    # Log level
+    # You can use a string or a number
+    # Supported levels:
+    #   CRITICAL: 50
+    #   ERROR   : 40
+    #   WARNING : 30
+    #   INFO    : 20
+    #   DEBUG   : 10
+    # Example:
+    #   level: INFO
+    #   level: 20
+    # These two settings are the same
+    #
+    # level: INFO
