@@ -10,7 +10,7 @@ with open ( 'README.md', encoding='utf-8' ) as readme_file:
 
 setup (
 	name = 'oijs',
-	version = '0.0.0.dev1',
+	version = '1.0.0',
 
 	description = 'Judge System for OI and ACM',
 	long_description = long_description,
