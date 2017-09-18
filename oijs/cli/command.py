@@ -11,7 +11,7 @@ import sys
 import logging
 
 from .cli_ret_values import *
-from ..command.help import show_help
+from .commands import show_help
 from ..globals.data import global_arguments
 
 
