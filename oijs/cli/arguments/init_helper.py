@@ -56,6 +56,7 @@ def init_sub_command_arg_parser ():
 
 	init_exit ( sub_arg )
 	init_help ( sub_arg )
+	init_init ( sub_arg )
 
 	logging.debug ( 'success' )
 
@@ -74,3 +75,10 @@ def init_help ( sub_arg ):
 	logging.debug ( 'started' )
 	cur_parser = sub_arg.add_parser ( 'help', help = 'show this help message' )
 	logging.debug ( 'added sub_command help' )
+
+
+
+def init_init ( sub_arg ):
+	logging.debug ( 'started' )
+	cur_parser = sub_arg.add_parser ( 'init', help = 'Create a new project' )
+	logging.debug ( 'added sub_command init' )
