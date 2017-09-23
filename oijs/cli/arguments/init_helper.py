@@ -81,4 +81,5 @@ def init_help ( sub_arg ):
 def init_init ( sub_arg ):
 	logging.debug ( 'started' )
 	cur_parser = sub_arg.add_parser ( 'init', help = 'Create a new project' )
+	cur_parser.add_argument ( 'init_type', help = 'The type of the project', choices = [ 'problem' ] )
 	logging.debug ( 'added sub_command init' )

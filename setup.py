@@ -35,6 +35,7 @@ setup (
 	data_files = [
 		( 'share/doc/oijs', [ 'docs/README.md', 'docs/installation.md' ] ),
 		( 'lib/oijs/oijs_dir', [ 'lib/oijs_dir/config.yml' ] ),
+		( 'lib/oijs/init_dir/problem_dir', [ 'lib/init_dir/problem_dir/config.yml' ] )
 	],
 
 	entry_points = {

@@ -8,6 +8,8 @@
 
 
 import logging
+from ...globals.data import global_arguments
+from . import init_problem
 
 
 
@@ -15,4 +17,14 @@ import logging
 
 def init ():
 	logging.debug ( 'started' )
+	logging.info ( 'init type: {0}'.format ( global_arguments.current_arg.init_type ) )
 	print ( 'initializing...' )
+	available_types[global_arguments.current_arg.init_type] ()
+
+
+
+
+
+available_types = {
+	'problem': init_problem.init_problem
+}

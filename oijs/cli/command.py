@@ -19,11 +19,6 @@ from ..globals.data import global_arguments
 
 
 
-available_commands = {
-	'help': show_help.show_help,
-	'init': init.init
-}
-
 def run_command ():
 	logging.debug ( 'function started' )
 
@@ -44,3 +39,12 @@ def run_command ():
 		available_commands[argv.sub_command] ()
 
 	return RET_OK
+
+
+
+
+
+available_commands = {
+	'help': show_help.show_help,
+	'init': init.init
+}
