@@ -16,7 +16,7 @@ import os
 
 def load_data ():
 	global current_dir
-	current_dir = sys.path[0]
+	current_dir = os.path.abspath ( '{0}/..'.format ( sys.path[0] ) )
 
 
 

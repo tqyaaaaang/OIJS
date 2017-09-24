@@ -65,4 +65,4 @@ def check_conf_exist ():
 	if not os.path.exists ( os.path.expanduser ( '~/.oijs' ) ):
 		print ( 'Can\'t find config directory. Generating one.' )
 
-		shutil.copytree ( global_data.current_dir + '/../lib/oijs/oijs_dir', os.path.expanduser ( '~/.oijs' ) )
+		shutil.copytree ( global_data.current_dir + '/lib/oijs/oijs_dir', os.path.expanduser ( '~/.oijs' ) )

@@ -11,7 +11,8 @@ import sys
 import logging
 
 from .cli_ret_values import *
-from ..command.help import show_help
+from .commands import show_help
+from .commands import init
 from ..globals.data import global_arguments
 
 
@@ -33,8 +34,17 @@ def run_command ():
 	elif argv.sub_command == 'exit':
 		logging.debug ( 'received exit' )
 		return RET_EXIT
-	elif argv.sub_command == 'help':
-		logging.debug ( 'running command : help' )
-		show_help.show_help ()
+	elif argv.sub_command in available_commands:
+		logging.debug ( 'running command : {0}'.format ( argv.sub_command ) )
+		available_commands[argv.sub_command] ()
 
 	return RET_OK
+
+
+
+
+
+available_commands = {
+	'help': show_help.show_help,
+	'init': init.init
+}
