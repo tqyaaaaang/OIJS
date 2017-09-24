@@ -31,7 +31,7 @@ data_files = get_all_files ( 'lib/', 'lib/oijs/' ) + get_all_files ( 'docs/', 's
 
 setup (
 	name = 'oijs',
-	version = '1.0.0',
+	version = '1.1.0',
 
 	description = 'Judge System for OI and ACM',
 	long_description = long_description,
