@@ -5,41 +5,24 @@ Judge System for OI and ACM
 Currently installation is done by python-pip.
 
 ### Install
-
-#### Non-root user
 cd to the root of this repository and run the following command
 ```bash
-pip3 install .
+./install.sh install
 ```
-this will install the package to ~/.local, you may need to add ~/.local/bin to you $PATH
+If you run it as non-root user, this will install the package to ~/.local.
 
-if you want to install it to /usr/local, use
-```bash
-sudo -H pip3 install .
-```
+You may need to add ~/.local/bin to your $PATH
 
-#### Roor user
-cd to the root of this repository and run the following command
-```bash
-pip3 install .
-```
+Use sudo if you need to install it to /usr/local
 
 ### Uninstall
 cd to the root of this repository and run the following command
 ```bash
-pip3 uninstall oijs
-```
-if you want to uninstall it as non-root user from /usr/local, use
-```bash
-sudo -H pip3 uninstall oijs
+./install.sh uninstall
 ```
 
 ### Upgrade
 cd to the root of this repository and run the following command
 ```bash
-pip3 install --upgrade .
-```
-if you want to upgrade it as non-root user from /usr/local, use
-```bash
-sudo -H pip3 install --upgrade .
+./install.sh upgrade
 ```

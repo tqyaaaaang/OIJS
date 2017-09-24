@@ -4,9 +4,30 @@
 # OIJS: setup.py
 
 from setuptools import setup, find_packages
+import os
 
 with open ( 'README.md', encoding='utf-8' ) as readme_file:
 	long_description = readme_file.read ()
+
+
+
+def get_all_files ( src, dst ):
+	cur_files = os.listdir ( src )
+	in_src = []
+	cur_data_files = []
+	for element in cur_files:
+		if os.path.isfile ( src + element ):
+			in_src.append ( src + element )
+		else:
+			cur_data_files.extend ( get_all_files ( src + element + '/', dst + element + '/' ) )
+	if in_src:
+		cur_data_files.append ( ( dst, in_src ) )
+	return cur_data_files
+
+
+data_files = get_all_files ( 'lib/', 'lib/oijs/' ) + get_all_files ( 'docs/', 'share/doc/oijs/' )
+
+
 
 setup (
 	name = 'oijs',
@@ -32,11 +53,7 @@ setup (
 		'oijs.globals.config': [ 'default_conf/*.yml' ]
 	},
 
-	data_files = [
-		( 'share/doc/oijs', [ 'docs/README.md', 'docs/installation.md' ] ),
-		( 'lib/oijs/oijs_dir', [ 'lib/oijs_dir/config.yml' ] ),
-		( 'lib/oijs/init_dir/problem_dir', [ 'lib/init_dir/problem_dir/config.yml' ] )
-	],
+	data_files = data_files,
 
 	entry_points = {
 		'console_scripts': [
