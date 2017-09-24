@@ -25,7 +25,8 @@ def complete ( text, line, begidx, endidx ):
 def complete_names ( text, line, begidx, endidx ):
 	available_list = [
 		'help',
-		'exit'
+		'exit',
+		'init'
 	]
 
 	return cli_complete_helper.getprefix ( available_list, text )
