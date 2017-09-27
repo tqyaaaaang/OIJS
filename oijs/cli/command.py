@@ -13,6 +13,7 @@ import logging
 from .cli_ret_values import *
 from .commands import show_help
 from .commands import init
+from .commands import judge
 from ..globals.data import global_arguments
 from ..globals.log import log_decorator
 
@@ -48,5 +49,6 @@ def run_command ():
 
 available_commands = {
 	'help': show_help.show_help,
-	'init': init.init
+	'init': init.init,
+	'judge': judge.judge
 }

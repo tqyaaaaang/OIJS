@@ -59,6 +59,7 @@ def init_sub_command_arg_parser ():
 	init_exit ( sub_arg )
 	init_help ( sub_arg )
 	init_init ( sub_arg )
+	init_judge ( sub_arg )
 
 	gl.debug ( 'success' )
 
@@ -85,3 +86,11 @@ def init_init ( sub_arg ):
 	cur_parser = sub_arg.add_parser ( 'init', help = 'Create a new project' )
 	cur_parser.add_argument ( 'init_type', help = 'The type of the project', choices = [ 'problem' ] )
 	gl.debug ( 'added sub_command init' )
+
+
+
+def init_judge ( sub_arg ):
+	logging.debug ( 'started' )
+	cur_parser = sub_arg.add_parser ( 'judge', help = 'Judge a solution' )
+	cur_parser.add_argument ( 'submission_id', help = 'The id of the submission' )
+	logging.debug ( 'added sub_command judge' )
