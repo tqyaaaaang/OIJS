@@ -3,4 +3,16 @@
 
 # config
 
-name: {Your project name}
+project_type: problem
+
+name: {Name}
+time_limit: {Time Limit}
+memory_limit: {Memory Limit}
+input_file: {Input file}
+output_file: {Output file}
+
+type: {Type}
+
+judger_args: []
+runner_args: []
+compare_args: []
