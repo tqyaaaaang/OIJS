@@ -11,13 +11,15 @@ import logging
 from ...globals.data import global_arguments
 from . import init_problem
 
+gl = logging.getLogger ( 'global' )
+
 
 
 
 
 def init ():
-	logging.debug ( 'started' )
-	logging.info ( 'init type: {0}'.format ( global_arguments.current_arg.init_type ) )
+	gl.debug ( 'started' )
+	gl.info ( 'init type: {0}'.format ( global_arguments.current_arg.init_type ) )
 	print ( 'initializing...' )
 	available_types[global_arguments.current_arg.init_type] ()
 

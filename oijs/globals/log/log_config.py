@@ -16,10 +16,16 @@ from ..config import global_conf
 
 
 def config_log ():
-	logging.basicConfig (
-		format = '%(asctime)s : %(filename)s ( %(funcName)s ) : %(levelname)s : %(message)s',
-		datefmt = '%Y-%m-%d %H:%M:%S',
+	global_logger = logging.getLogger ( 'global' )
+	global_logger_handlers = logging.FileHandler (
 		filename = os.path.expanduser ( global_conf.config['log']['file'] ),
-		filemode = global_conf.config['log']['mode'],
-		level = global_conf.config['log']['level']
+		mode = global_conf.config['log']['mode']
 	)
+	global_logger_handlers.setFormatter (
+		logging.Formatter (
+			fmt = '%(asctime)s : %(filename)s ( %(funcName)s ) : %(levelname)s : %(message)s',
+			datefmt = '%Y-%m-%d %H:%M:%S'
+		)
+	)
+	global_logger.addHandler ( global_logger_handlers )
+	global_logger.setLevel ( global_conf.config['log']['level'] )

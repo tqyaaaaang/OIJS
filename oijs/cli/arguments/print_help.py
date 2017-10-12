@@ -15,12 +15,14 @@ from ...globals.data import global_arguments
 from . import init_helper
 from . import get_arguments
 
+gl = logging.getLogger ( 'global' )
+
 
 
 
 
 def print_cli_main_help ():
-	logging.debug ( 'started' )
+	gl.debug ( 'started' )
 
 	arg_parser = argparse.ArgumentParser (
 		prog = 'oijs',
@@ -28,7 +30,7 @@ def print_cli_main_help ():
 		parents = [ get_arguments.global_arg_parser, get_arguments.sub_command_arg_parser ]
 	)
 
-	logging.debug ( 'get parser completed' )
+	gl.debug ( 'get parser completed' )
 
 	arg_parser.print_help ()
 
@@ -36,7 +38,7 @@ def print_cli_main_help ():
 
 
 def print_cli_help ():
-	logging.debug ( 'started' )
+	gl.debug ( 'started' )
 
 	arg_parser = argparse.ArgumentParser (
 		prog = 'oijs',
@@ -46,6 +48,6 @@ def print_cli_help ():
 		add_help = False
 	)
 
-	logging.debug ( 'get parser completed' )
+	gl.debug ( 'get parser completed' )
 
 	arg_parser.print_help ()

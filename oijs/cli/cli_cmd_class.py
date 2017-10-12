@@ -10,7 +10,6 @@
 import sys
 import logging
 import cmd
-import logging
 
 from . import command
 from .arguments import get_arguments
@@ -19,6 +18,8 @@ from .cli_ret_values import *
 from . import cli
 from ..globals.exception import exception
 from . import cli_complete
+
+gl = logging.getLogger ( 'global' )
 
 
 
@@ -32,23 +33,23 @@ class cli_cmd ( cmd.Cmd ):
 
 
 	def default ( self, argv ):
-		logging.debug ( 'received one command : {0}'.format ( argv ) )
+		gl.debug ( 'received one command : {0}'.format ( argv ) )
 
 		current_argv_list = argv.split ()
 
 		current_argv = get_arguments.get_cli_arguments ( current_argv_list )
 
-		logging.debug ( 'command arguments : {0}'.format ( str ( current_argv ) ) )
+		gl.debug ( 'command arguments : {0}'.format ( str ( current_argv ) ) )
 
 		global_arguments.current_arg = current_argv
 
 		return_val = cli.run_single_command ()
 
 		if return_val == RET_EXIT:
-			logging.info ( 'receiving command \'exit\', exit normally' )
+			gl.info ( 'receiving command \'exit\', exit normally' )
 			return True
 		elif return_val == RET_FATAL:
-			logging.debug ( 'receiving fatal error, aborted the cli' )
+			gl.debug ( 'receiving fatal error, aborted the cli' )
 			raise exception.RET_FATAL_exception ()
 
 
@@ -70,6 +71,6 @@ class cli_cmd ( cmd.Cmd ):
 		return self.default ( 'help {0}'.format ( argv ) )
 
 	def do_EOF ( self, argv ):
-		logging.warning ( 'received EOF. Ignored it' )
+		gl.warning ( 'received EOF. Ignored it' )
 		print ()
 		print ( 'WARNING : Received EOF, ignored it. Use \'exit\' to exit', file=sys.stderr )
