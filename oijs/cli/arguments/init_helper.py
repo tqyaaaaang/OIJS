@@ -89,8 +89,8 @@ def init_init ( sub_arg ):
 
 
 
+@log_decorator.log_func
 def init_judge ( sub_arg ):
-	logging.debug ( 'started' )
 	cur_parser = sub_arg.add_parser ( 'judge', help = 'Judge a solution' )
 	cur_parser.add_argument ( 'submission_id', help = 'The id of the submission' )
-	logging.debug ( 'added sub_command judge' )
+	gl.debug ( 'added sub_command judge' )

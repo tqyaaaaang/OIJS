@@ -12,11 +12,14 @@ import os
 import logging
 
 from ...globals.data import global_arguments
+from ...globals.log import log_decorator
+
+gl = logging.getLogger ( 'global' )
 
 
 
 
 
+@log_decorator.log_func
 def judge ():
-	logging.debug ( 'started' )
 	print ( 'judge' )
