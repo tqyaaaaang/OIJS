@@ -14,6 +14,7 @@ from ..globals.config import global_conf
 from . import cli
 from .arguments import get_arguments
 from ..globals.data import global_arguments
+from ..globals.log import log_decorator
 
 gl = logging.getLogger ( 'global' )
 
@@ -21,6 +22,7 @@ gl = logging.getLogger ( 'global' )
 
 
 
+@log_decorator.log_func
 def cli_run ():
 	gl.info ( 'OIJS started' )
 	gl.debug ( 'configuration : ' + str ( global_conf.config ) )

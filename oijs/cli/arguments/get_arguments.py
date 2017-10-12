@@ -13,6 +13,7 @@ import argparse
 
 from ...globals.data import global_arguments
 from . import init_helper
+from ...globals.log import log_decorator
 
 gl = logging.getLogger ( 'global' )
 
@@ -20,6 +21,7 @@ gl = logging.getLogger ( 'global' )
 
 
 
+@log_decorator.log_func
 def get_cli_main_arguments ():
 	arg_parser = argparse.ArgumentParser (
 		prog = 'oijs',
@@ -37,6 +39,7 @@ def get_cli_main_arguments ():
 
 
 
+@log_decorator.log_func
 def get_cli_arguments ( argv ):
 	arg_parser = argparse.ArgumentParser (
 		prog = 'oijs',
@@ -61,9 +64,8 @@ def get_cli_arguments ( argv ):
 
 
 
+@log_decorator.log_func
 def init_parsers ():
-	gl.debug ( 'started' )
-
 	global global_arg_parser
 	global_arg_parser = init_helper.init_global_arg_parser ()
 

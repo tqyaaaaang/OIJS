@@ -14,6 +14,7 @@ from .cli_ret_values import *
 from .commands import show_help
 from .commands import init
 from ..globals.data import global_arguments
+from ..globals.log import log_decorator
 
 gl = logging.getLogger ( 'global' )
 
@@ -21,9 +22,8 @@ gl = logging.getLogger ( 'global' )
 
 
 
+@log_decorator.log_func
 def run_command ():
-	gl.debug ( 'function started' )
-
 	argv = global_arguments.current_arg
 
 	gl.info ( 'running command : {0}'.format ( str ( argv ) ) )

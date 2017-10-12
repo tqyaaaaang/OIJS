@@ -18,6 +18,7 @@ from .arguments import get_arguments
 from ..globals.data import global_data
 from . import cli_cmd_class
 from ..globals.exception import exception
+from ..globals.log import log_decorator
 
 gl = logging.getLogger ( 'global' )
 
@@ -25,9 +26,8 @@ gl = logging.getLogger ( 'global' )
 
 
 
+@log_decorator.log_func
 def run_shell ():
-	gl.debug ( 'function started' )
-
 	global_data.run_mode = 'cli'
 
 	try:
@@ -45,8 +45,8 @@ def run_shell ():
 
 
 
+@log_decorator.log_func
 def run_by_argument ():
-	gl.info ( 'function started' )
 	gl.info ( 'run_by_argument mode with arguments = \'{0}\''.format ( ' '.join ( sys.argv[1:] ) ) )
 
 	global_data.run_mode = 'argv'

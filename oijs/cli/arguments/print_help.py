@@ -14,6 +14,7 @@ import argparse
 from ...globals.data import global_arguments
 from . import init_helper
 from . import get_arguments
+from ...globals.log import log_decorator
 
 gl = logging.getLogger ( 'global' )
 
@@ -21,9 +22,8 @@ gl = logging.getLogger ( 'global' )
 
 
 
+@log_decorator.log_func
 def print_cli_main_help ():
-	gl.debug ( 'started' )
-
 	arg_parser = argparse.ArgumentParser (
 		prog = 'oijs',
 		description = 'Judge System for OI and ACM',
@@ -37,9 +37,8 @@ def print_cli_main_help ():
 
 
 
+@log_decorator.log_func
 def print_cli_help ():
-	gl.debug ( 'started' )
-
 	arg_parser = argparse.ArgumentParser (
 		prog = 'oijs',
 		description = 'Judge System for OI and ACM',

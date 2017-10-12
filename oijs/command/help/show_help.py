@@ -11,6 +11,7 @@ import logging
 
 from ...globals.data import global_data
 from ...cli.arguments import print_help
+from ...globals.log import log_decorator
 
 gl = logging.getLogger ( 'global' )
 
@@ -18,8 +19,8 @@ gl = logging.getLogger ( 'global' )
 
 
 
+@log_decorator.log_func
 def show_help ():
-	gl.debug ( 'started' )
 	if global_data.run_mode == 'cli':
 		gl.debug ( 'Detected cli mode' )
 		print_help.print_cli_help ()

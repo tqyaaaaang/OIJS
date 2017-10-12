@@ -11,12 +11,15 @@ import sys
 import argparse
 import logging
 
+from ...globals.log import log_decorator
+
 gl = logging.getLogger ( 'global' )
 
 
 
 
 
+@log_decorator.log_func
 def init_global_arg_parser ():
 	arg_parser = argparse.ArgumentParser (
 		add_help = False
@@ -37,6 +40,7 @@ def init_global_arg_parser ():
 
 
 
+@log_decorator.log_func
 def init_sub_command_arg_parser ():
 	arg_parse = argparse.ArgumentParser (
 		add_help = False
@@ -62,18 +66,21 @@ def init_sub_command_arg_parser ():
 
 
 
+@log_decorator.log_func
 def init_exit ( sub_arg ):
 	cur_parser = sub_arg.add_parser ( 'exit', help = 'exit OIJS' )
 	gl.debug ( 'added sub_command exit' )
 
 
 
+@log_decorator.log_func
 def init_help ( sub_arg ):
 	cur_parser = sub_arg.add_parser ( 'help', help = 'show this help message' )
 	gl.debug ( 'added sub_command help' )
 
 
 
+@log_decorator.log_func
 def init_init ( sub_arg ):
 	cur_parser = sub_arg.add_parser ( 'init', help = 'Create a new project' )
 	cur_parser.add_argument ( 'init_type', help = 'The type of the project', choices = [ 'problem' ] )

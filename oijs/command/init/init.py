@@ -10,6 +10,7 @@
 import logging
 from ...globals.data import global_arguments
 from . import init_problem
+from ...globals.log import log_decorator
 
 gl = logging.getLogger ( 'global' )
 
@@ -17,8 +18,8 @@ gl = logging.getLogger ( 'global' )
 
 
 
+@log_decorator.log_func
 def init ():
-	gl.debug ( 'started' )
 	gl.info ( 'init type: {0}'.format ( global_arguments.current_arg.init_type ) )
 	print ( 'initializing...' )
 	available_types[global_arguments.current_arg.init_type] ()
