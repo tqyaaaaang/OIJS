@@ -16,4 +16,4 @@ import logging
 
 
 def getprefix ( available_list, prefix_str ):
-	return [ cur_str for cur_str in available_list if cur_str[:len(prefix_str)] == prefix_str ];
+	return [ cur_str for cur_str in available_list if cur_str[:len(prefix_str)] == prefix_str ]
