@@ -10,9 +10,11 @@
 import logging
 import os
 import shutil
+
 from ...globals.data import global_arguments
 from ...globals.data import global_data
 from ...globals.log import log_decorator
+from . import create_dir
 
 gl = logging.getLogger ( 'global' )
 
@@ -24,4 +26,9 @@ gl = logging.getLogger ( 'global' )
 def init_problem ():
 	print ( 'Type: problem' )
 
-	os.system ( 'cp -r {0} {1}'.format ( global_data.current_dir + '/lib/oijs/init_dir/problem_dir/*', global_arguments.global_arg.directory ) )
+	create_dir.create_dir (
+		os.path.join ( global_data.current_dir, 'lib/oijs/init_dir/problem_dir' ),
+		global_arguments.global_arg.directory,
+		os.path.join ( os.path.dirname ( os.path.abspath ( __file__ ) ), 'dir_structure/problem_dir.yml' ),
+		global_arguments.current_arg.force
+	)

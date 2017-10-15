@@ -21,7 +21,7 @@ gl = logging.getLogger ( 'global' )
 @log_decorator.log_func
 def init ():
 	gl.info ( 'init type: {0}'.format ( global_arguments.current_arg.init_type ) )
-	print ( 'initializing...' )
+	print ( 'Initializing...' )
 	available_types[global_arguments.current_arg.init_type] ()
 
 

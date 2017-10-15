@@ -1,0 +1,17 @@
+# OIJS configuration file
+#
+# problem directory structure
+
+
+
+
+
+root:
+    - config.yml
+    - data.yml
+    - submission:
+        EMPTY_DIR
+    - tests:
+        EMPTY_DIR
+    - lib:
+        EMPTY_DIR

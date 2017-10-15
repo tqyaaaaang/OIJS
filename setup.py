@@ -50,7 +50,8 @@ setup (
 	python_requires = '>=3',
 
 	package_data = {
-		'oijs.globals.config': [ 'default_conf/*.yml' ]
+		'oijs.globals.config': [ 'default_conf/*.yml' ],
+		'oijs.command.init': [ 'dir_structure/*.yml' ]
 	},
 
 	data_files = data_files,
