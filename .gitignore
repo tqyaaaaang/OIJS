@@ -1,3 +1,5 @@
 # OIJS: .gitignore
 
 *.pyc
+
+*.egg-info
