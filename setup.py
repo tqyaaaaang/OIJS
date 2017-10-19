@@ -45,6 +45,7 @@ setup (
 
 	install_requires = [
 		'PyYAML>=3.12',
+		'wrapt>=1.10'
 	],
 
 	python_requires = '>=3',
