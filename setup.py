@@ -48,7 +48,7 @@ setup (
 		'wrapt>=1.10'
 	],
 
-	python_requires = '>=3',
+	python_requires = '>=3.5',
 
 	package_data = {
 		'oijs.globals.config': [ 'default_conf/*.yml' ],
