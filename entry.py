@@ -4,9 +4,11 @@
 # OIJS: entry
 
 
-
+"""
+module entry
+"""
 
 
 if __name__ == '__main__':
-	from oijs import main
-	main.main ()
+    from oijs import main
+    main.main()

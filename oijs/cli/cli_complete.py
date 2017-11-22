@@ -4,30 +4,32 @@
 # OIJS: cli.cli_complete
 
 
+"""
+module oijs.cli.cli_complete
+"""
 
-
-
-import sys
-import os
-import logging
 
 from . import cli_complete_helper
 
 
+def complete(text, line, begidx, endidx):   # pylint: disable=W0613
+    """
+    complete
+    """
+
+    return []
 
 
+def complete_names(text, line, begidx, endidx):   # pylint: disable=W0613
+    """
+    complete_names
+    """
 
-def complete ( text, line, begidx, endidx ):
-	return []
+    available_list = [
+        'help',
+        'exit',
+        'init',
+        'judge'
+    ]
 
-
-
-def complete_names ( text, line, begidx, endidx ):
-	available_list = [
-		'help',
-		'exit',
-		'init',
-		'judge'
-	]
-
-	return cli_complete_helper.getprefix ( available_list, text )
+    return cli_complete_helper.getprefix(available_list, text)

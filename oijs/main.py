@@ -4,7 +4,9 @@
 # OIJS: main
 
 
-
+"""
+module oijs.main
+"""
 
 
 from .cli import cli_main
@@ -13,19 +15,17 @@ from .globals.config import config
 from .cli.arguments import get_arguments
 
 
+def main():
+    """
+    main
+    """
 
+    data.load_data()
+    config.load_conf()
+    get_arguments.init_parsers()
 
-
-def main ():
-	data.load_data ()
-	config.load_conf ()
-	get_arguments.init_parsers ()
-
-	cli_main.cli_run ()
-
-
-
+    cli_main.cli_run()
 
 
 if __name__ == '__main__':
-	main ()
+    main()

@@ -4,16 +4,14 @@
 # OIJS: controller.controller
 
 
+"""
+module oijs.controller.controller
+"""
 
 
+def main():
+    """
+    main
+    """
 
-import os
-import sys
-import logging
-
-
-
-
-
-def main ():
-	print ( 'Calling controller' )
+    print('Calling controller')

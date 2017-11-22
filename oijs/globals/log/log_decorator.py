@@ -1,107 +1,128 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# OIJS: global.log.log_decorator
+# OIJS: globals.log.log_decorator
 
 
-
+"""
+module oijs.globals.log.log_decorator
+"""
 
 
 import logging
 import os
-import sys
-from functools import wraps
-from ..exception import exception
 import time
 import inspect
-from ..config import global_conf
-import wrapt
 import functools
 import copy
+import wrapt
+from ..exception import exception
 
 
+class _log_func_tmp_handler:   # pylint: disable=R0903, C0103
+    """
+    class _log_func_tmp_handler
+    """
+
+    def __init__(self, func, logger=logging.getLogger()):
+        """
+        __init__
+        """
+
+        self.logger = logger
+        self.funcname = func.__name__
+        self.filename = os.path.basename(inspect.getfile(func))
+        self.old_handlers = None
+        self.new_handlers = None
+
+    def __enter__(self):
+        """
+        __enter__
+        """
+
+        self.old_handlers = self.logger.handlers
+        self.logger.handlers = []
+        self.new_handlers = []
+
+        for handler in self.old_handlers:
+            self.logger.removeHandler(handler)
+
+        for old_handler in self.old_handlers:
+            new_handler = copy.copy(old_handler)
+
+            fmt = old_handler.formatter._fmt   # pylint: disable=W0212
+            fmt = fmt.replace('{filename}', self.filename)
+            fmt = fmt.replace('{funcName}', self.funcname)
+
+            new_handler.setFormatter(
+                logging.Formatter(
+                    fmt=fmt,
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    style='{'
+                )
+            )
+
+            self.new_handlers.append(new_handler)
+            self.logger.addHandler(new_handler)
+
+    def __exit__(self, *ignore):
+        """
+        __exit__
+        """
+
+        for handler in self.new_handlers:
+            self.logger.removeHandler(handler)
+
+        for handler in self.old_handlers:
+            self.logger.addHandler(handler)
 
 
+def log_func(func=None, logger='global'):
+    """
+    log_func
+    """
 
-class _log_func_tmp_handler:
-	def __init__ ( self, func, logger = logging.getLogger () ):
-		self.logger = logger
-		self.funcname = func.__name__
-		self.filename = os.path.basename ( inspect.getfile ( func ) )
-	
-	def __enter__ ( self ):
-		self.old_handlers = self.logger.handlers
-		self.logger.handlers = []
-		self.new_handlers = []
+    if func is None:
+        return functools.partial(log_func, logger=logger)
 
-		for handler in self.old_handlers:
-			self.logger.removeHandler ( handler )
+    @ wrapt.decorator
+    def wrapper(func, instance, args, kwargs):   # pylint: disable=W0613
+        """
+        wrapper
+        """
 
-		for old_handler in self.old_handlers:
-			new_handler = copy.copy ( old_handler )
+        start_msg = 'started'
 
-			fmt = old_handler.formatter._fmt
-			fmt = fmt.replace ( '%(filename)s', self.filename )
-			fmt = fmt.replace ( '%(funcName)s', self.funcname )
+        if logger and logger not in logging.Logger.manager.loggerDict:
+            raise exception.oijs_exception(
+                'logger is not a valid LoggerClass in decorator log_func')
 
-			new_handler.setFormatter (
-				logging.Formatter (
-					fmt = fmt,
-					datefmt = '%Y-%m-%d %H:%M:%S'
-				)
-			)
+        cur_logger = logging.getLogger(logger)
 
-			self.new_handlers.append ( new_handler )
-			self.logger.addHandler ( new_handler )
-	
-	def __exit__ ( self, *ignore ):
-		for handler in self.new_handlers:
-			self.logger.removeHandler ( handler )
-		
-		for handler in self.old_handlers:
-			self.logger.addHandler ( handler )
+        with _log_func_tmp_handler(func, cur_logger):
+            cur_logger.debug(start_msg)
 
+        start_time = time.time()
 
+        try:
+            return_val = func(*args, **kwargs)
+        except:
+            except_msg = 'received exception, exit the function'
 
+            with _log_func_tmp_handler(func, cur_logger):
+                cur_logger.debug(except_msg)
 
+            raise
 
-def log_func ( func = None, logger = 'global' ):
-	if func is None:
-		return functools.partial ( log_func, logger = logger )
+        stop_time = time.time()
 
-	@ wrapt.decorator
-	def wrapper ( func, instance, args, kwargs ):
-		start_msg = 'started'
+        used_time = (stop_time - start_time) * 1000
 
-		if logger and not logger in logging.Logger.manager.loggerDict:
-			raise exception.oijs_exception ( 'logger is not a valid LoggerClass in decorator log_func' )
+        exit_msg = 'exit normally, time used : {0:.3f} ms'.format(used_time)
 
-		cur_logger = logging.getLogger ( logger )
+        with _log_func_tmp_handler(func, cur_logger):
+            cur_logger.debug(exit_msg)
 
-		with _log_func_tmp_handler ( func, cur_logger ):
-			cur_logger.debug ( start_msg )
-		
-		start_time = time.time ()
+        return return_val
 
-		try:
-			return_val = func ( *args, **kwargs )
-		except:
-			except_msg = 'received exception, exit the function'
-
-			with _log_func_tmp_handler ( func, cur_logger ):
-				cur_logger.debug ( except_msg )
-			
-			raise
-
-		stop_time = time.time ()
-
-		used_time = ( stop_time - start_time ) * 1000
-
-		exit_msg = 'exit normally, time used : {0:.3f} ms'.format ( used_time )
-
-		with _log_func_tmp_handler ( func, cur_logger ):
-			cur_logger.debug ( exit_msg )
-		
-		return return_val
-	
-	return wrapper ( func )
+    return wrapper(func)   # pylint: disable=E1120

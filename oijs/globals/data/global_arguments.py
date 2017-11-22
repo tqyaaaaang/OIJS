@@ -4,9 +4,11 @@
 # OIJS: globals.data.global_arguments
 
 
+"""
+module oijs.globals.data.global_arguments
+"""
 
 
+global_arg = None   # pylint: disable=C0103
 
-global_arg = None
-
-current_arg = None
+current_arg = None   # pylint: disable=C0103

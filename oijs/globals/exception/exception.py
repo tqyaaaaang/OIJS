@@ -4,21 +4,27 @@
 # OIJS: globals.exception.exception
 
 
+"""
+module oijs.globals.exception.exception
+"""
 
 
+class oijs_exception(Exception):   # pylint: disable=C0103
+    """
+    class oijs_exception
+    """
 
-class oijs_exception ( Exception ):
-	def __init__ ( self, error_content ):
-		self._error = error_content
+    def error(self):
+        """
+        error
+        """
+
+        return self.args[0]
 
 
+class RET_FATAL_exception(Exception):   # pylint: disable=C0103
+    """
+    class RET_FATAL_exception
+    """
 
-	def error ( self ):
-		return self._error
-
-
-
-
-
-class RET_FATAL_exception ( Exception ):
-	pass
+    pass

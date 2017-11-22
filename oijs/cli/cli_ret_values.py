@@ -4,7 +4,9 @@
 # OIJS: cli.cli_ret_values
 
 
-
+"""
+module oijs.cli.cli_ret_values
+"""
 
 
 RET_OK = 0

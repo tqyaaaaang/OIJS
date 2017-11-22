@@ -4,51 +4,50 @@
 # OIJS: cli.command
 
 
+"""
+module oijs.cli.command
+"""
 
 
-
-import sys
 import logging
 
-from .cli_ret_values import *
+from . import cli_ret_values
 from .commands import show_help
 from .commands import init
 from .commands import judge
 from ..globals.data import global_arguments
 from ..globals.log import log_decorator
 
-gl = logging.getLogger ( 'global' )
-
-
-
+gl = logging.getLogger('global')   # pylint: disable=C0103
 
 
 @log_decorator.log_func
-def run_command ():
-	argv = global_arguments.current_arg
+def run_command():
+    """
+    run_commmand
+    """
 
-	gl.info ( 'running command : {0}'.format ( str ( argv ) ) )
+    argv = global_arguments.current_arg
 
-	print ( 'Running command : {0}'.format ( str ( argv ) ) )
+    gl.info('running command : %s', argv)
 
-	if ( argv == None ) or ( argv.sub_command == None ):
-		gl.debug ( 'running command : received empty command' )
-		return RET_EMPTY
-	elif argv.sub_command == 'exit':
-		gl.debug ( 'received exit' )
-		return RET_EXIT
-	elif argv.sub_command in available_commands:
-		gl.debug ( 'running command : {0}'.format ( argv.sub_command ) )
-		available_commands[argv.sub_command] ()
+    print('Running command : ', argv)
 
-	return RET_OK
+    if (argv is None) or (argv.sub_command is None):
+        gl.debug('running command : received empty command')
+        return cli_ret_values.RET_EMPTY
+    elif argv.sub_command == 'exit':
+        gl.debug('received exit')
+        return cli_ret_values.RET_EXIT
+    elif argv.sub_command in available_commands:
+        gl.debug('running command : %s', argv.sub_command)
+        available_commands[argv.sub_command]()
+
+    return cli_ret_values.RET_OK
 
 
-
-
-
-available_commands = {
-	'help': show_help.show_help,
-	'init': init.init,
-	'judge': judge.judge
+available_commands = {   # pylint: disable=C0103
+    'help': show_help.show_help,
+    'init': init.init,
+    'judge': judge.judge
 }

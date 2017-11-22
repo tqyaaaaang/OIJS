@@ -4,46 +4,52 @@
 # OIJS: command.judge.temp_controller
 
 
+"""
+module oijs.command.judge.temp_controller
+"""
 
 
-
-import sys
-import os
 import logging
 import multiprocessing
 
-from ...globals.data import global_arguments
 from ...globals.log import log_decorator
 
 from ...controller import controller
 
-gl = logging.getLogger ( 'global' )
-
-
-
+gl = logging.getLogger('global')   # pylint: disable=C0103
 
 
 @log_decorator.log_func
-def start_controller ():
-	ctl = multiprocessing.Process (
-		target = controller.main
-	)
+def start_controller():
+    """
+    start_controller
+    """
 
-	ctl.start ()
+    ctl = multiprocessing.Process(
+        target=controller.main
+    )
 
-	return ctl
+    ctl.start()
 
-
-
-@log_decorator.log_func
-def stop_controller ( ctl ):
-	ctl.join ( timeout = 0.1 )
-
-	if ctl.is_alive ():
-		kill_controller ( ctl )
-
+    return ctl
 
 
 @log_decorator.log_func
-def kill_controller ( ctl ):
-	ctl.terminate ()
+def stop_controller(ctl):
+    """
+    stop_controller
+    """
+
+    ctl.join(timeout=0.1)
+
+    if ctl.is_alive():
+        kill_controller(ctl)
+
+
+@log_decorator.log_func
+def kill_controller(ctl):
+    """
+    kill_controller
+    """
+
+    ctl.terminate()

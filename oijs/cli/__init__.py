@@ -3,3 +3,7 @@
 #
 # OIJS: cli.__init__
 
+
+"""
+module oijs.cli.__init__
+"""
