@@ -23,7 +23,7 @@ def load_conf(filename):
 
     config = {}
     with open(filename) as curfile:
-        config = yaml.load(curfile)
+        config = yaml.load(curfile, Loader=yaml.FullLoader)
     return config
 
 

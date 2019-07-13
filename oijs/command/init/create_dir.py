@@ -47,7 +47,7 @@ def create_dir(src, dst, config_filename, force=False):
 
     structure = {}
     with open(config_filename) as config_file:
-        structure = yaml.load(config_file)
+        structure = yaml.load(config_file, Loader=yaml.FullLoader)
 
     gl.debug('load directory structure succeeded')
 
