@@ -9,7 +9,7 @@ module oijs.cli.cli_complete
 """
 
 
-from . import cli_complete_helper
+from oijs.cli import cli_complete_helper
 
 
 def complete(text, line, begidx, endidx):   # pylint: disable=W0613

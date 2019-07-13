@@ -11,8 +11,8 @@ module oijs.command.judge.judge
 
 import logging
 
-from ...globals.log import log_decorator
-from . import temp_controller
+from oijs.globals.log import log_decorator
+from oijs.command.judge import temp_controller
 
 gl = logging.getLogger('global')   # pylint: disable=C0103
 

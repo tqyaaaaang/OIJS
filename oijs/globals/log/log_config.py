@@ -11,7 +11,7 @@ module oijs.globals.log.log_config
 
 import logging
 import os
-from ..config import global_conf
+from oijs.globals.config import global_conf
 
 
 def config_log():

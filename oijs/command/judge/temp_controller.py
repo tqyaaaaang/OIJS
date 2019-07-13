@@ -12,9 +12,9 @@ module oijs.command.judge.temp_controller
 import logging
 import multiprocessing
 
-from ...globals.log import log_decorator
+from oijs.globals.log import log_decorator
 
-from ...controller import controller
+from oijs.controller import controller
 
 gl = logging.getLogger('global')   # pylint: disable=C0103
 

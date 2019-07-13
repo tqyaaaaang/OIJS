@@ -9,8 +9,8 @@ module oijs.cli.commands.show_help
 """
 
 
-from ...command.help import show_help as real_show_help
-from ...globals.log import log_decorator
+from oijs.command.help import show_help as real_show_help
+from oijs.globals.log import log_decorator
 
 
 @log_decorator.log_func

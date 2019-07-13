@@ -15,7 +15,7 @@ import sys
 import shutil
 import yaml
 
-from ...globals.log import log_decorator
+from oijs.globals.log import log_decorator
 
 gl = logging.getLogger('global')   # pylint: disable=C0103
 

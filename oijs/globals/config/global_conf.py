@@ -11,8 +11,8 @@ module oijs.globals.config.global_conf
 
 import sys
 import os
-from . import conf_helper
-from ..exception.exception import oijs_exception
+from oijs.globals.config import conf_helper
+from oijs.globals.exception.exception import oijs_exception
 
 
 config = {}   # pylint: disable=C0103

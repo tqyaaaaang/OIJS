@@ -16,7 +16,7 @@ import inspect
 import functools
 import copy
 import wrapt
-from ..exception import exception
+from oijs.globals.exception import exception
 
 
 class _log_func_tmp_handler:   # pylint: disable=R0903, C0103

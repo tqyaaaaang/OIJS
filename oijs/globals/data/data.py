@@ -9,7 +9,7 @@ module oijs.globals.data.data
 """
 
 
-from . import global_data
+from oijs.globals.data import global_data
 
 
 def load_data():

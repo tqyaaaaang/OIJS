@@ -11,9 +11,9 @@ module oijs.command.help.show_help
 
 import logging
 
-from ...globals.data import global_data
-from ...cli.arguments import print_help
-from ...globals.log import log_decorator
+from oijs.globals.data import global_data
+from oijs.cli.arguments import print_help
+from oijs.globals.log import log_decorator
 
 gl = logging.getLogger('global')   # pylint: disable=C0103
 

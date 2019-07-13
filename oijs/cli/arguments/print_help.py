@@ -12,8 +12,8 @@ module ijs.cli.arguments.print_help
 import logging
 import argparse
 
-from . import get_arguments
-from ...globals.log import log_decorator
+from oijs.cli.arguments import get_arguments
+from oijs.globals.log import log_decorator
 
 gl = logging.getLogger('global')   # pylint: disable=C0103
 

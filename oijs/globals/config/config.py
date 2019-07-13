@@ -9,9 +9,9 @@ module oijs.global.config.config
 """
 
 
-from . import global_conf
-from ..log import log_config
-from . import conf_helper
+from oijs.globals.config import global_conf
+from oijs.globals.log import log_config
+from oijs.globals.config import conf_helper
 
 
 def load_conf():

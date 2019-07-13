@@ -10,9 +10,9 @@ module oijs.command.init.init
 
 
 import logging
-from ...globals.data import global_arguments
-from . import init_problem
-from ...globals.log import log_decorator
+from oijs.globals.data import global_arguments
+from oijs.command.init import init_problem
+from oijs.globals.log import log_decorator
 
 gl = logging.getLogger('global')   # pylint: disable=C0103
 

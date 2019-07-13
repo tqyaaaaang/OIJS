@@ -11,11 +11,11 @@ module oijs.cli.cli_main
 
 import logging
 
-from ..globals.config import global_conf
-from . import cli
-from .arguments import get_arguments
-from ..globals.data import global_arguments
-from ..globals.log import log_decorator
+from oijs.globals.config import global_conf
+from oijs.cli import cli
+from oijs.cli.arguments import get_arguments
+from oijs.globals.data import global_arguments
+from oijs.globals.log import log_decorator
 
 gl = logging.getLogger('global')   # pylint: disable=C0103
 

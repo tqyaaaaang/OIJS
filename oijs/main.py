@@ -9,10 +9,10 @@ module oijs.main
 """
 
 
-from .cli import cli_main
-from .globals.data import data
-from .globals.config import config
-from .cli.arguments import get_arguments
+from oijs.cli import cli_main
+from oijs.globals.data import data
+from oijs.globals.config import config
+from oijs.cli.arguments import get_arguments
 
 
 def main():

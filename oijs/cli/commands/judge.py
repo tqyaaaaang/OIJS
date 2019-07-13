@@ -11,9 +11,9 @@ module oijs.cli.commands.judge
 
 import os
 
-from ...command.judge import judge as real_judge
-from ...globals.log import log_decorator
-from ...globals.data import global_arguments
+from oijs.command.judge import judge as real_judge
+from oijs.globals.log import log_decorator
+from oijs.globals.data import global_arguments
 
 
 @log_decorator.log_func

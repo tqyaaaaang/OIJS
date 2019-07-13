@@ -12,8 +12,8 @@ module oijs.globals.config.conf_helper
 import os
 import shutil
 import yaml
-from ..data import global_data
-from ..exception.exception import oijs_exception
+from oijs.globals.data import global_data
+from oijs.globals.exception.exception import oijs_exception
 
 
 def load_conf(filename):

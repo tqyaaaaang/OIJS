@@ -13,12 +13,12 @@ import sys
 import logging
 import cmd
 
-from .arguments import get_arguments
-from ..globals.data import global_arguments
-from . import cli_ret_values
-from .import command
-from ..globals.exception import exception
-from . import cli_complete
+from oijs.cli.arguments import get_arguments
+from oijs.globals.data import global_arguments
+from oijs.cli import cli_ret_values
+from oijs.cli import command
+from oijs.globals.exception import exception
+from oijs.cli import cli_complete
 
 gl = logging.getLogger('global')   # pylint: disable=C0103
 

@@ -12,10 +12,10 @@ module oijs.command.init.init_problem
 import logging
 import os
 
-from ...globals.data import global_arguments
-from ...globals.data import global_data
-from ...globals.log import log_decorator
-from . import create_dir
+from oijs.globals.data import global_arguments
+from oijs.globals.data import global_data
+from oijs.globals.log import log_decorator
+from oijs.command.init import create_dir
 
 gl = logging.getLogger('global')   # pylint: disable=C0103
 
