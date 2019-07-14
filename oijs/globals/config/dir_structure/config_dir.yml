@@ -1,0 +1,10 @@
+# OIJS configuration file
+#
+# config directory structure
+
+
+
+
+
+root:
+    - config.yml

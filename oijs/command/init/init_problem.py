@@ -29,9 +29,9 @@ def init_problem():
     print('Type: problem')
 
     create_dir.create_dir(
-        os.path.join(global_data.current_dir, 'lib/oijs/init_dir/problem_dir'),
+        'oijs.misc.init_dir.problem_dir',
         global_arguments.global_arg.directory,
-        os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                     'dir_structure/problem_dir.yml'),
+        'oijs.command.init.dir_structure',
+        'problem_dir.yml',
         global_arguments.current_arg.force
     )

@@ -12,18 +12,19 @@ module oijs.globals.config.conf_helper
 import os
 import shutil
 import yaml
+
 from oijs.globals.data import global_data
 from oijs.globals.exception.exception import oijs_exception
+from oijs import utils
 
 
-def load_conf(filename):
+def load_conf(curfile):
     """
     load_conf
     """
 
     config = {}
-    with open(filename) as curfile:
-        config = yaml.load(curfile, Loader=yaml.FullLoader)
+    config = yaml.load(curfile, Loader=yaml.FullLoader)
     return config
 
 
@@ -85,5 +86,11 @@ def check_conf_exist():
     if not os.path.exists(os.path.expanduser('~/.oijs')):
         print('Can\'t find config directory. Generating one.')
 
-        shutil.copytree(global_data.current_dir +
-                        '/lib/oijs/oijs_dir', os.path.expanduser('~/.oijs'))
+        os.mkdir(os.path.expanduser('~/.oijs'))
+        
+        structure = utils.file_operations.load_dir_structure('oijs.globals.config.dir_structure', 'config_dir.yml')
+        utils.file_operations.copy_dir(
+            'oijs.misc.oijs_dir',
+            os.path.expanduser('~/.oijs'),
+            structure['root'],
+        )

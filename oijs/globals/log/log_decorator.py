@@ -77,7 +77,7 @@ class _log_func_tmp_handler:   # pylint: disable=R0903, C0103
             self.logger.addHandler(handler)
 
 
-def log_func(func=None, logger='global'):
+def log_func(func=None, logger='global', logger_may_not_exist=False):
     """
     log_func
     """
@@ -94,8 +94,11 @@ def log_func(func=None, logger='global'):
         start_msg = 'started'
 
         if logger and logger not in logging.Logger.manager.loggerDict:
-            raise exception.oijs_exception(
-                'logger is not a valid LoggerClass in decorator log_func')
+            if logger_may_not_exist:
+                return func(*args, **kwargs)
+            else:
+                raise exception.oijs_exception(
+                    'logger is not a valid LoggerClass in decorator log_func')
 
         cur_logger = logging.getLogger(logger)
 

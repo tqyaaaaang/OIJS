@@ -10,6 +10,7 @@ module setup
 
 
 import os
+import glob
 from setuptools import setup, find_packages
 
 
@@ -36,9 +37,16 @@ def get_all_files(src, dst):
     return cur_data_files
 
 
+def get_package_data(pattern):
+    data = glob.glob('oijs/' + pattern, recursive=True)
+    return list(map(lambda x: x[5:], data))
+
+
 # pylint: disable=C0103
-data_files = get_all_files('lib/', 'lib/oijs/') \
-    + get_all_files('docs/', 'share/doc/oijs/')
+data_files = get_all_files('docs/', 'share/doc/oijs/')
+
+# pylint: disable=C0103
+package_data = get_package_data('**/*.yml')
 
 
 setup(
@@ -57,14 +65,14 @@ setup(
 
     install_requires=[
         'PyYAML>=3.12',
-        'wrapt>=1.10'
+        'wrapt>=1.10',
+        'importlib_resources>=1.0.2'
     ],
 
     python_requires='>=3.5',
 
     package_data={
-        'oijs.globals.config': ['default_conf/*.yml'],
-        'oijs.command.init': ['dir_structure/*.yml']
+        'oijs': package_data
     },
 
     data_files=data_files,
