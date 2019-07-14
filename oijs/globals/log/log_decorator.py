@@ -83,7 +83,7 @@ def log_func(func=None, logger='global', logger_may_not_exist=False):
     """
 
     if func is None:
-        return functools.partial(log_func, logger=logger)
+        return functools.partial(log_func, logger=logger, logger_may_not_exist=logger_may_not_exist)
 
     @ wrapt.decorator
     def wrapper(func, instance, args, kwargs):   # pylint: disable=W0613
