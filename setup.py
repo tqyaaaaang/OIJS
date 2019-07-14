@@ -71,7 +71,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'oijs = oijs.main:main'
+            'oijs = oijs.__main__:main'
         ]
     }
 )
