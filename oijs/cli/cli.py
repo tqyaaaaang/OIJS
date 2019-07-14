@@ -17,7 +17,7 @@ from oijs.cli import command
 from oijs.globals.data import global_arguments
 from oijs.globals.data import global_data
 from oijs.cli.cli_cmd_class import cli_cmd
-from oijs.globals.exception import exception
+from oijs.globals.exceptions import exception
 from oijs.globals.log import log_decorator
 
 gl = logging.getLogger('global')   # pylint: disable=C0103

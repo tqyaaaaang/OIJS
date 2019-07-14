@@ -16,7 +16,7 @@ import inspect
 import functools
 import copy
 import wrapt
-from oijs.globals.exception import exception
+from oijs.globals.exceptions import exception
 
 
 class _log_func_tmp_handler:   # pylint: disable=R0903, C0103
@@ -97,7 +97,7 @@ def log_func(func=None, logger='global', logger_may_not_exist=False):
             if logger_may_not_exist:
                 return func(*args, **kwargs)
             else:
-                raise exception.oijs_exception(
+                raise exception.OIJSException(
                     'logger is not a valid LoggerClass in decorator log_func')
 
         cur_logger = logging.getLogger(logger)

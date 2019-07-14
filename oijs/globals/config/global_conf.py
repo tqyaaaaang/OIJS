@@ -12,7 +12,7 @@ module oijs.globals.config.global_conf
 import sys
 import os
 from oijs.globals.config import conf_helper
-from oijs.globals.exception.exception import oijs_exception
+from oijs.globals.exceptions.exception import OIJSException
 
 try:
     import importlib.resources as pkg_resources
@@ -38,6 +38,6 @@ def load_conf():
     global config   # pylint: disable=W0603, C0103
     try:
         config = conf_helper.join_conf(default_conf, custom_conf)
-    except oijs_exception as err:
-        print(err.error(), file=sys.stderr)
+    except OIJSException as err:
+        print(err.error_msg(), file=sys.stderr)
         exit(1)

@@ -17,11 +17,12 @@ import yaml
 
 from oijs.globals.log import log_decorator
 from oijs import utils
+from oijs.globals import exceptions
 
 gl = logging.getLogger('global')   # pylint: disable=C0103
 
 
-class file_exist_exception(Exception):   # pylint: disable=C0103
+class file_exist_exception(exceptions.OIJSException):   # pylint: disable=C0103
     """
     class file_exist_exception
     """

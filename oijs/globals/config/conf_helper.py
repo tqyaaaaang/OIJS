@@ -14,7 +14,7 @@ import shutil
 import yaml
 
 from oijs.globals.data import global_data
-from oijs.globals.exception.exception import oijs_exception
+from oijs.globals.exceptions.exception import OIJSException
 from oijs import utils
 
 
@@ -36,7 +36,7 @@ def join_conf(default_conf, custom_conf, current_config=''):   # pylint: disable
     if (isinstance(default_conf, dict)) and not isinstance(custom_conf, dict):
         if custom_conf is None:
             return default_conf
-        raise oijs_exception(
+        raise OIJSException(
             'FATAL ERROR : {} should be a map. An item was found.'.format(
                 current_config))
 
@@ -49,7 +49,7 @@ def join_conf(default_conf, custom_conf, current_config=''):   # pylint: disable
                           current_config + '.' + cur)
             else:
                 if isinstance(custom_conf[cur], dict):
-                    raise oijs_exception(
+                    raise OIJSException(
                         ('FATAL ERROR : configuration {}.{} should be an item. ' + \
                         'A map was found.').format(current_config, cur))
 
@@ -63,7 +63,7 @@ def join_conf(default_conf, custom_conf, current_config=''):   # pylint: disable
                         if len(custom_conf[cur]) == 1:
                             cur_conf[cur] = custom_conf[cur][0]
                         else:
-                            raise oijs_exception(
+                            raise OIJSException(
                                 ('FATAL ERROR : ' + \
                                 'configuration {}.{} should be an item. ' + \
                                 'A list was found.').format(current_config, cur)
@@ -71,7 +71,7 @@ def join_conf(default_conf, custom_conf, current_config=''):   # pylint: disable
                     else:
                         cur_conf[cur] = custom_conf[cur]
         else:
-            raise oijs_exception(
+            raise OIJSException(
                 'FATAL ERROR : configuration {}.{} does not exist.'.format(
                     current_config, cur))
 
@@ -87,7 +87,7 @@ def check_conf_exist():
         print('Can\'t find config directory. Generating one.')
 
         os.mkdir(os.path.expanduser('~/.oijs'))
-        
+
         structure = utils.file_operations.load_dir_structure('oijs.globals.config.dir_structure', 'config_dir.yml')
         utils.file_operations.copy_dir(
             'oijs.misc.oijs_dir',
