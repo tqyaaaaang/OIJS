@@ -11,6 +11,7 @@ module setup
 
 import os
 import glob
+from pathlib import Path
 from setuptools import setup, find_packages
 
 
@@ -18,22 +19,26 @@ with open('README.md', encoding='utf-8') as readme_file:
     long_description = readme_file.read()   # pylint: disable=C0103
 
 
-def get_all_files(src, dst):
+def get_all_files(src: Path, dst: Path):
     """
     get_all_files
     """
 
-    cur_files = os.listdir(src)
+    src = Path(src)
+    dst = Path(dst)
+
+    cur_files = os.listdir(str(src))
     in_src = []
     cur_data_files = []
     for element in cur_files:
-        if os.path.isfile(src + element):
-            in_src.append(src + element)
+        if (src / element).is_file():
+            in_src.append(str(src / element))
         else:
             cur_data_files.extend(get_all_files(
-                src + element + '/', dst + element + '/'))
+                src / element, dst / element
+            ))
     if in_src:
-        cur_data_files.append((dst, in_src))
+        cur_data_files.append((str(dst), in_src))
     return cur_data_files
 
 
